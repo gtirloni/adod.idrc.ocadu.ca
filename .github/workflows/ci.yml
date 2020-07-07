@@ -52,6 +52,8 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    needs: publish
+
     steps:
       - name: Deploy stack
         uses: appleboy/ssh-action@master
