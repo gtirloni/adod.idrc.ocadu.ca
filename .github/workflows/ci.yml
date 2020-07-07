@@ -23,7 +23,7 @@ jobs:
         run: docker build --tag $DOCKER_IMAGE_NAME .
 
       - name: Start container
-        run: docker run --rm -ti -p 8080:80 $DOCKER_IMAGE_NAME
+        run: docker run --detach -p 8080:80 $DOCKER_IMAGE_NAME
 
       - name: Smoke test
         run: curl --location --no-buffer --retry 120 --retry-delay 1 http://localhost:8080
