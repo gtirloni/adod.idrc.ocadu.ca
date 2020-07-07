@@ -1,9 +1,7 @@
-name: CI/CD
+name: CD
 
 on:
   push:
-    branches: [ master ]
-  pull_request:
     branches: [ master ]
 
 env:
@@ -13,29 +11,9 @@ env:
   STATIC_SITE_PORT: 38089
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Build image
-        run: docker build --tag $DOCKER_IMAGE_NAME .
-
-      - name: Start container
-        run: docker run --detach -p 8080:80 $DOCKER_IMAGE_NAME
-
-      - name: Wait
-        run: sleep 5
-
-      - name: Smoke test
-        run: curl --location --no-buffer --retry 120 --retry-delay 1 http://localhost:8080
-
   publish:
     #if: github.repository == 'inclusive-design/adod.idrc.ocadu.ca'
     if: github.repository == 'gtirloni/adod.idrc.ocadu.ca'
-
-    needs: test
 
     runs-on: ubuntu-latest
 
