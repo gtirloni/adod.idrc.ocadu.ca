@@ -1,4 +1,4 @@
-name: adod.idrc.ocadu.ca
+name: CI/CD
 
 on:
   push:
@@ -30,6 +30,8 @@ jobs:
 
   publish:
     if: github.repository == 'inclusive-design/adod.idrc.ocadu.ca'
+
+    needs: test
 
     runs-on: ubuntu-latest
 
