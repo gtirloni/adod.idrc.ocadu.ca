@@ -32,7 +32,8 @@ jobs:
         run: curl --location --no-buffer --retry 120 --retry-delay 1 http://localhost:8080
 
   publish:
-    if: github.repository == 'inclusive-design/adod.idrc.ocadu.ca'
+    #if: github.repository == 'inclusive-design/adod.idrc.ocadu.ca'
+    if: github.repository == 'gtirloni/adod.idrc.ocadu.ca'
 
     needs: test
 
@@ -53,7 +54,8 @@ jobs:
           docker push $DOCKER_IMAGE_NAME:latest
       
   deploy:
-    if: github.repository == 'inclusive-design/adod.idrc.ocadu.ca'
+    #if: github.repository == 'inclusive-design/adod.idrc.ocadu.ca'
+    if: github.repository == 'gtirloni/adod.idrc.ocadu.ca'
 
     runs-on: ubuntu-latest
 
